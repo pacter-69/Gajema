@@ -328,7 +328,6 @@ GameObject:
   m_Component:
   - component: {fileID: 352007703}
   - component: {fileID: 352007702}
-  - component: {fileID: 352007701}
   - component: {fileID: 352007700}
   m_Layer: 0
   m_Name: CameraLayer2
@@ -381,14 +380,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &352007701
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352007698}
-  m_Enabled: 1
 --- !u!20 &352007702
 Camera:
   m_ObjectHideFlags: 0
@@ -498,7 +489,6 @@ GameObject:
   m_Component:
   - component: {fileID: 546515487}
   - component: {fileID: 546515486}
-  - component: {fileID: 546515485}
   - component: {fileID: 546515484}
   m_Layer: 0
   m_Name: CameraLayer2_BOX
@@ -551,14 +541,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &546515485
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546515483}
-  m_Enabled: 1
 --- !u!20 &546515486
 Camera:
   m_ObjectHideFlags: 0
@@ -651,7 +633,7 @@ Transform:
   m_GameObject: {fileID: 609466041}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6, y: -7.2, z: 0}
+  m_LocalPosition: {x: 4.7, y: -4.67, z: 0}
   m_LocalScale: {x: 0.66859764, y: 0.66859764, z: 0.6685976}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1027,9 +1009,8 @@ MonoBehaviour:
   camera1: {fileID: 981856925}
   camera2: {fileID: 352007698}
   camera3: {fileID: 1156517788}
-  alpha: 4.25
-  zoomedOutSize: 0
-  zoomedInSize: 0
+  alpha: 4.5
+  zoomedOutSize: 5
   activeCamera: {fileID: 981856925}
   enumCamera: 0
 --- !u!1 &1081470205
@@ -1145,7 +1126,7 @@ Transform:
   m_GameObject: {fileID: 1111763056}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.37, y: -2.43, z: 0}
+  m_LocalPosition: {x: 4.32, y: -4.88, z: 0}
   m_LocalScale: {x: 0.9150336, y: 0.9150336, z: 0.91503346}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1217,7 +1198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1156517793}
   - component: {fileID: 1156517792}
-  - component: {fileID: 1156517791}
   - component: {fileID: 1156517790}
   m_Layer: 0
   m_Name: CameraLayer3
@@ -1270,14 +1250,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1156517791
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156517788}
-  m_Enabled: 1
 --- !u!20 &1156517792
 Camera:
   m_ObjectHideFlags: 0
@@ -1426,7 +1398,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1538969015}
   - component: {fileID: 1538969014}
-  - component: {fileID: 1538969013}
   - component: {fileID: 1538969012}
   m_Layer: 0
   m_Name: CameraLayer3_BOX
@@ -1479,14 +1450,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1538969013
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1538969011}
-  m_Enabled: 1
 --- !u!20 &1538969014
 Camera:
   m_ObjectHideFlags: 0
