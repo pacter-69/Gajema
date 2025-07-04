@@ -1,82 +1,107 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 
 public class MovementBehaviour : MonoBehaviour
 {
-    public float stepSize, timer, coolDown, lerpt, sum = 0;
-    bool canMove;   
+    public float stepSize = 1f;
+    public float moveDuration = 0.1f;
+    public float moveCooldown = 0.1f;
+    public int gridSize;
 
-    [SerializeField] public InputActionReference movementLeft;
-    [SerializeField] public InputActionReference movementRight;
-    [SerializeField] public InputActionReference movementUp;
-    [SerializeField] public InputActionReference movementDown;
+    private bool isMoving = false;
+    private float moveTimer = 0f;
+    private float cooldownTimer = 0f;
 
+    private Vector3 startPosition;
+    private Vector3 targetPosition;
 
-    public void Start()
+    [SerializeField] private InputActionReference movementLeft;
+    [SerializeField] private InputActionReference movementRight;
+    [SerializeField] private InputActionReference movementUp;
+    [SerializeField] private InputActionReference movementDown;
+
+    [Header("Limits")]
+    
+    [SerializeField] private Transform limitXPlus, limitXMinus, limitYPlus, limitYMinus;
+
+    private Vector2Int currentGridPosition;
+
+    private void Start()
     {
-        stepSize = gameObject.GetComponentInParent<Grid>().cellSize.x;
+
+
+        stepSize = GetComponentInParent<Grid>().cellSize.x;
+
+        // Start in grid space, convert from world
+        Vector3 worldPos = transform.position;
+        currentGridPosition = new Vector2Int(
+            Mathf.RoundToInt(worldPos.x / stepSize),
+                Mathf.RoundToInt(worldPos.y / stepSize)
+            );
+
+        SnapToGrid();
     }
 
-    void Update()
+    private void Update()
     {
-        MovePlayer();
-    }
+        cooldownTimer -= Time.deltaTime;
 
-    void MovePlayer()
-    {
-        if (canMove)
+        if (!isMoving && cooldownTimer <= 0f)
         {
-            if (movementLeft.action.IsInProgress())
+            Vector2Int direction = Vector2Int.zero;
+
+            if (movementLeft.action.WasPressedThisFrame()) direction = Vector2Int.left;
+            else if (movementRight.action.WasPressedThisFrame()) direction = Vector2Int.right;
+            else if (movementUp.action.WasPressedThisFrame()) direction = Vector2Int.up;
+            else if (movementDown.action.WasPressedThisFrame()) direction = Vector2Int.down;
+
+            if (direction != Vector2Int.zero)
             {
-                Lerp(transform.position.x, transform.position.x - stepSize, true);
-                canMove = false;
-            }
-            else if (movementRight.action.IsInProgress())
-            {
-                Lerp(transform.position.x, transform.position.x + stepSize, true);
-                canMove = false;
-            }
-            else if (movementUp.action.IsInProgress())
-            {
-                Lerp(transform.position.y, transform.position.y + stepSize, false);
-                canMove = false;
-            }
-            else if (movementDown.action.IsInProgress())
-            {
-                Lerp(transform.position.y, transform.position.y - stepSize, false);
-                canMove = false;
+                Vector2Int nextPos = currentGridPosition + direction;
+                if (IsWithinBounds(nextPos))
+                {
+                    StartMovement(direction);
+                }
             }
         }
 
-        if (!canMove)
+        if (isMoving)
         {
-            timer += Time.deltaTime;
-            if (timer >= coolDown)
-            {
-                canMove = true;
-                timer = 0f;
-                lerpt = 0f;
-            }
+            AnimateMovement();
         }
     }
 
-    void Lerp(float from, float where, bool x)
+    private void StartMovement(Vector2Int direction)
     {
-        if (sum < 0.2)
+        isMoving = true;
+        moveTimer = 0f;
+        cooldownTimer = moveCooldown;
+
+        startPosition = transform.position;
+        currentGridPosition += direction;
+        targetPosition = new Vector3(currentGridPosition.x * stepSize, currentGridPosition.y * stepSize, 0f);
+    }
+
+    private void AnimateMovement()
+    {
+        moveTimer += Time.deltaTime;
+        float t = Mathf.Clamp01(moveTimer / moveDuration);
+        transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+
+        if (t >= 1f)
         {
-            sum += Time.deltaTime;
-            lerpt = sum / 0.2f;
+            isMoving = false;
         }
-        if (x)
-        {
-            transform.position -= new Vector3(Mathf.Lerp(from, where, lerpt), 0, 0) * Time.deltaTime;
-        }
-        else
-        {
-            transform.position += new Vector3(0, Mathf.Lerp(from, where, lerpt), 0) * Time.deltaTime;
-        }
+    }
+
+    private bool IsWithinBounds(Vector2Int gridPos)
+    {
+        return gridPos.x >= limitXMinus.position.x && gridPos.x <= limitXPlus.position.x &&
+               gridPos.y >= limitYMinus.position.y && gridPos.y <= limitYPlus.position.y;
+    }
+
+    private void SnapToGrid()
+    {
+        transform.position = new Vector3(currentGridPosition.x * stepSize, currentGridPosition.y * stepSize, 0f);
     }
 }
