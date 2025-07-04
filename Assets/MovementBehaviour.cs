@@ -58,9 +58,22 @@ public class MovementBehaviour : MonoBehaviour
             if (direction != Vector2Int.zero)
             {
                 Vector2Int nextPos = currentGridPosition + direction;
-                if (IsWithinBounds(nextPos))
+                GameObject boxObj = GetPushableAt(nextPos);
+
+                if (boxObj != null)
                 {
-                    StartMovement(direction);
+                    var box = boxObj.GetComponent<BoxBehaviour>();
+                    var boxCurrentPos = box.GetGridPosition();
+
+                    if (box.TryPush(direction, boxCurrentPos, IsBlocked))
+                    {
+                        // Player does NOT move when pushing
+                        cooldownTimer = moveCooldown;
+                    }
+                }
+                else if (!IsBlocked(nextPos))
+                {
+                    StartMovement(direction); // Valid empty tile, move the player
                 }
             }
         }
@@ -70,6 +83,7 @@ public class MovementBehaviour : MonoBehaviour
             AnimateMovement();
         }
     }
+
 
     private void StartMovement(Vector2Int direction)
     {
@@ -81,6 +95,7 @@ public class MovementBehaviour : MonoBehaviour
         currentGridPosition += direction;
         targetPosition = new Vector3(currentGridPosition.x * stepSize, currentGridPosition.y * stepSize, 0f);
     }
+
 
     private void AnimateMovement()
     {
@@ -104,4 +119,28 @@ public class MovementBehaviour : MonoBehaviour
     {
         transform.position = new Vector3(currentGridPosition.x * stepSize, currentGridPosition.y * stepSize, 0f);
     }
+
+    GameObject GetPushableAt(Vector2Int gridPos)
+    {
+        // Could be improved with spatial partitioning for performance
+        foreach (var box in FindObjectsByType<BoxBehaviour>(FindObjectsSortMode.None))
+        {
+            if (box.GetGridPosition() == gridPos)
+                return box.gameObject;
+        }
+        return null;
+    }
+
+    bool IsBlocked(Vector2Int pos)
+    {
+        // Customize this to include walls or other boxes
+        if (!IsWithinBounds(pos)) return true;
+
+        var box = GetPushableAt(pos);
+        if (box != null) return true;
+
+        // Add checks for other obstacles here
+        return false;
+    }
+
 }
