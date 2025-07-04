@@ -26,6 +26,13 @@ public class MovementBehaviour : MonoBehaviour
 
     private Vector2Int currentGridPosition;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
 
@@ -96,6 +103,7 @@ public class MovementBehaviour : MonoBehaviour
         isMoving = true;
         moveTimer = 0f;
         cooldownTimer = moveCooldown;
+        audioManager.PlaySFX(audioManager.walk);
 
         startPosition = transform.position;
         currentGridPosition += direction;

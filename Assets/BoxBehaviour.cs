@@ -10,6 +10,13 @@ public class BoxBehaviour : MonoBehaviour
     private Vector3 startPosition;
     private float moveTimer = 0f;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         stepSize = GetComponentInParent<Grid>().cellSize.x;
@@ -23,7 +30,7 @@ public class BoxBehaviour : MonoBehaviour
             moveTimer += Time.deltaTime;
             float t = Mathf.Clamp01(moveTimer / moveDuration);
             transform.position = Vector3.Lerp(startPosition, targetPosition, t);
-
+            audioManager.PlaySFX(audioManager.push);
             if (t >= 1f)
                 isMoving = false;
         }
