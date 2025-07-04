@@ -8,7 +8,7 @@ public class MovementBehaviour : MonoBehaviour
     public float moveCooldown = 0.1f;
     public int gridSize;
 
-    private bool isMoving = false;
+    private bool isMoving = false, hasSavedThisSlide = false;
     private float moveTimer = 0f;
     private float cooldownTimer = 0f;
 
@@ -24,12 +24,10 @@ public class MovementBehaviour : MonoBehaviour
 
     [SerializeField] private Transform limitXPlus, limitXMinus, limitYPlus, limitYMinus;
 
-    private Vector2Int currentGridPosition;
+    private Vector2Int currentGridPosition, lastDirection;
 
     private void Start()
     {
-
-
         stepSize = GetComponentInParent<Grid>().cellSize.x;
 
         // Start in grid space, convert from world
@@ -40,10 +38,21 @@ public class MovementBehaviour : MonoBehaviour
             );
 
         SnapToGrid();
+
+        foreach (var box in FindObjectsByType<BoxBehaviour>(FindObjectsSortMode.None))
+        {
+            box.SetBlockChecker(IsBlocked);
+        }
     }
 
     private void Update()
     {
+        Vector3 worldPos = transform.position;
+        currentGridPosition = new Vector2Int(
+            Mathf.RoundToInt(worldPos.x / stepSize),
+            Mathf.RoundToInt(worldPos.y / stepSize)
+        );
+
         cooldownTimer += Time.deltaTime;
 
         if (!isMoving && cooldownTimer >= 0.4f)
@@ -57,6 +66,7 @@ public class MovementBehaviour : MonoBehaviour
 
             if (direction != Vector2Int.zero)
             {
+                hasSavedThisSlide = false;
                 Vector2Int nextPos = currentGridPosition + direction;
                 GameObject boxObj = GetPushableAt(nextPos);
 
@@ -67,18 +77,11 @@ public class MovementBehaviour : MonoBehaviour
 
                     if (box.TryPush(direction, boxCurrentPos, IsBlocked))
                     {
-                        // Player does NOT move when pushing
                         cooldownTimer = moveCooldown;
                     }
                 }
                 else if (!IsBlocked(nextPos))
                 {
-                    Vector3 worldPos = transform.position;
-                    currentGridPosition = new Vector2Int(
-                        Mathf.RoundToInt(worldPos.x / stepSize),
-                            Mathf.RoundToInt(worldPos.y / stepSize)
-                        );
-                    Save();
                     StartMovement(direction); // Valid empty tile, move the player
                 }
             }
@@ -97,10 +100,20 @@ public class MovementBehaviour : MonoBehaviour
         moveTimer = 0f;
         cooldownTimer = moveCooldown;
 
+        lastDirection = direction;
+
+        // Save only once per slide
+        if (!hasSavedThisSlide)
+        {
+            Save();
+            hasSavedThisSlide = true;
+        }
+
         startPosition = transform.position;
         currentGridPosition += direction;
         targetPosition = new Vector3(currentGridPosition.x * stepSize, currentGridPosition.y * stepSize, 0f);
     }
+
 
 
     private void AnimateMovement()
@@ -112,8 +125,22 @@ public class MovementBehaviour : MonoBehaviour
         if (t >= 1f)
         {
             isMoving = false;
+
+            // Check if we're in ice mode
+            bool isIce = GetComponentInParent<LayerBehaviour>().isIce;
+
+            if (isIce)
+            {
+                Vector2Int nextPos = currentGridPosition + lastDirection;
+
+                if (!IsBlocked(nextPos))
+                {
+                    StartMovement(lastDirection);
+                }
+            }
         }
     }
+
 
     private bool IsWithinBounds(Vector2Int gridPos)
     {
@@ -128,7 +155,6 @@ public class MovementBehaviour : MonoBehaviour
 
     GameObject GetPushableAt(Vector2Int gridPos)
     {
-        // Could be improved with spatial partitioning for performance
         foreach (var box in FindObjectsByType<BoxBehaviour>(FindObjectsSortMode.None))
         {
             if (box.GetGridPosition() == gridPos)
@@ -137,17 +163,30 @@ public class MovementBehaviour : MonoBehaviour
         return null;
     }
 
+
+
     bool IsBlocked(Vector2Int pos)
     {
-        // Customize this to include walls or other boxes
         if (!IsWithinBounds(pos)) return true;
 
-        var box = GetPushableAt(pos);
-        if (box != null) return true;
+        var boxObj = GetPushableAt(pos);
+        if (boxObj != null)
+        {
+            var box = boxObj.GetComponent<BoxBehaviour>();
+            if (box != null)
+            {
+                // Block if box is normal or steel (you block both player-wise)
+                return true;
+            }
+        }
 
-        // Add checks for other obstacles here
+        // Block player standing on current tile
+        if (pos == currentGridPosition) return true;
+
         return false;
     }
+
+
 
     void Save()
     {
