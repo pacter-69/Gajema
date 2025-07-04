@@ -39,21 +39,21 @@ public class MovementBehaviour : MonoBehaviour
                 Mathf.RoundToInt(worldPos.y / stepSize)
             );
 
-        SnapToGrid();
+        //SnapToGrid();
     }
 
     private void Update()
     {
-        cooldownTimer -= Time.deltaTime;
+        cooldownTimer += Time.deltaTime;
 
-        if (!isMoving && cooldownTimer <= 0f)
+        if (!isMoving && cooldownTimer > 0.5f)
         {
             Vector2Int direction = Vector2Int.zero;
 
-            if (movementLeft.action.WasPressedThisFrame()) direction = Vector2Int.left;
-            else if (movementRight.action.WasPressedThisFrame()) direction = Vector2Int.right;
-            else if (movementUp.action.WasPressedThisFrame()) direction = Vector2Int.up;
-            else if (movementDown.action.WasPressedThisFrame()) direction = Vector2Int.down;
+            if (movementLeft.action.IsInProgress()) direction = Vector2Int.left;
+            else if (movementRight.action.IsInProgress()) direction = Vector2Int.right;
+            else if (movementUp.action.IsInProgress()) direction = Vector2Int.up;
+            else if (movementDown.action.IsInProgress()) direction = Vector2Int.down;
 
             if (direction != Vector2Int.zero)
             {
