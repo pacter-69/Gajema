@@ -21,7 +21,7 @@ public class MovementBehaviour : MonoBehaviour
     [SerializeField] private InputActionReference movementDown;
 
     [Header("Limits")]
-    
+
     [SerializeField] private Transform limitXPlus, limitXMinus, limitYPlus, limitYMinus;
 
     private Vector2Int currentGridPosition;
@@ -39,14 +39,14 @@ public class MovementBehaviour : MonoBehaviour
                 Mathf.RoundToInt(worldPos.y / stepSize)
             );
 
-        //SnapToGrid();
+        SnapToGrid();
     }
 
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
 
-        if (!isMoving && cooldownTimer > 0.5f)
+        if (!isMoving && cooldownTimer >= 0.4f)
         {
             Vector2Int direction = Vector2Int.zero;
 
@@ -73,6 +73,12 @@ public class MovementBehaviour : MonoBehaviour
                 }
                 else if (!IsBlocked(nextPos))
                 {
+                    Vector3 worldPos = transform.position;
+                    currentGridPosition = new Vector2Int(
+                        Mathf.RoundToInt(worldPos.x / stepSize),
+                            Mathf.RoundToInt(worldPos.y / stepSize)
+                        );
+                    Save();
                     StartMovement(direction); // Valid empty tile, move the player
                 }
             }
@@ -143,4 +149,8 @@ public class MovementBehaviour : MonoBehaviour
         return false;
     }
 
+    void Save()
+    {
+        GetComponentInParent<ControlZ>().SaveScene();
+    }
 }
