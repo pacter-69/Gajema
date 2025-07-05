@@ -7,7 +7,7 @@ public class BoxBehaviour : MonoBehaviour
     public float moveDuration = 0.1f;
 
     private bool isMoving = false;
-    private bool hasSavedThisSlide = false; // ⬅️ NEW
+    private bool hasSavedThisSlide = false;
     private Vector3 targetPosition;
     private Vector3 startPosition;
     private float moveTimer = 0f;
@@ -18,8 +18,12 @@ public class BoxBehaviour : MonoBehaviour
     public enum Type
     {
         Normal,
-        Steel
+        Steel,
+        Linked
     }
+
+    [Header("Linked boxes")]
+    public BoxBehaviour[] otherBoxes;
 
     private void Start()
     {
@@ -92,6 +96,11 @@ public class BoxBehaviour : MonoBehaviour
         targetPosition = new Vector3(nextPos.x * stepSize, nextPos.y * stepSize, 0f);
         moveTimer = 0f;
         isMoving = true;
+
+        for (int i = 0; i < otherBoxes.Length; i++)
+        {
+            otherBoxes[i].TryPush(direction, otherBoxes[i].GetGridPosition(), otherBoxes[i].isBlockedFunc);
+        }
 
         return true;
     }
