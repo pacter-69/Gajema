@@ -146,6 +146,7 @@ public class CameraBehaviour : MonoBehaviour
                     if (activeCamera == camera3)
                     {
                         activeCamera.transform.position = camera3Origin;
+                        activeCamera.GetComponent<Camera>().orthographicSize = 6.5f;
                     }
                 }
                 break;
@@ -158,11 +159,13 @@ public class CameraBehaviour : MonoBehaviour
                     {
                         activeCamera = camera2;
                         activeCamera.GetComponent<Camera>().orthographicSize = cameraTarget.transform.localScale.x / 2f; //1.8f
+                        activeCamera.transform.position = camera2Target.transform.position;
                     }
                     else if (activeCamera == camera2)
                     {
                         activeCamera = camera1;
                         activeCamera.GetComponent<Camera>().orthographicSize = cameraTarget.transform.localScale.x / 2f;
+                        activeCamera.transform.position = camera1Target.transform.position;
                     }
 
                     timer1 = 0;
