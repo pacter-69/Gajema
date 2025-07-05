@@ -8,6 +8,7 @@ public class ControlZ : MonoBehaviour
 
     // Optional: Reference to all tracked objects
     private List<Transform> trackedObjects = new List<Transform>();
+    private float timer = 0f, cooldown = 0.1f;
 
     private void Start()
     {
@@ -20,14 +21,13 @@ public class ControlZ : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S)) // Save on S
-        {
-            SaveScene();
-        }
+        timer += Time.deltaTime;
+        if (timer > 10000) timer = cooldown;
 
-        if (Input.GetKeyDown(KeyCode.Z)) // Undo on Z
+        if (Input.GetKey(KeyCode.Z) && timer >= cooldown) // Undo on Z
         {
             LoadScene();
+            timer = 0f;
         }
     }
 
