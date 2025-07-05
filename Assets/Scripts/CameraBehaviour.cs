@@ -2,7 +2,9 @@ using System;
 using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CameraBehaviour : MonoBehaviour
 {
@@ -14,10 +16,15 @@ public class CameraBehaviour : MonoBehaviour
     public float zoomedOutSize = 5;
     private Vector3 camera1Origin, camera2Origin, camera3Origin;
     private Vector3 cameraOrigin;
-    public GameObject activeCamera, activePlayer;
+    public GameObject activeCamera;
+    [HideInInspector] public GameObject activePlayer;
     private bool isZooming, isZoomingOut;
     public bool playerCanMove = true;
     private float timer1, timer2, timer3, timer4, zoomTimer;
+
+    [SerializeField] private InputActionReference previousLayer;
+    [SerializeField] private InputActionReference nextLayer;
+
     public enum EnumCamera
     {
         Playing,
@@ -71,7 +78,6 @@ public class CameraBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (activeCamera == camera1)
         {
             activeCamera.GetComponent<Camera>().depth = 1;
@@ -134,6 +140,10 @@ public class CameraBehaviour : MonoBehaviour
                     {
                         activeCamera.transform.position = camera2Origin;
                     }
+                    if (activeCamera == camera3)
+                    {
+                        activeCamera.transform.position = camera3Origin;
+                    }
                 }
                 break;
             case EnumCamera.Zoomout1:
@@ -162,7 +172,7 @@ public class CameraBehaviour : MonoBehaviour
                 zoomTimer += Time.deltaTime;
                 isZoomingOut = true;
 
-                if(zoomTimer > 0.5)
+                if(zoomTimer > 0.1)
                 {
                     Zoomout();
                 }
@@ -177,15 +187,30 @@ public class CameraBehaviour : MonoBehaviour
             playerCanMove = false;
         }
 
+        if (previousLayer.action.IsInProgress() && !isZooming && !isZoomingOut)
+        {
+            if (activeCamera == camera2 || activeCamera == camera3)
+            {
+                enumCamera = EnumCamera.Zoomout1;
+            }
+        }
+
+        if (nextLayer.action.IsInProgress() && !isZooming && !isZoomingOut)
+        {
+            if (activeCamera == camera1 || activeCamera == camera2)
+            {
+                enumCamera = EnumCamera.Zoom1;
+            }
+        }
     }
 
     public void Zoom()
     {
         isZooming = true;
         timer1 += Time.deltaTime;
-        activeCamera.transform.position = Vector3.Lerp(activeCamera.transform.position, cameraTarget.transform.position, (alpha-1.5f) * Time.deltaTime);
+        activeCamera.transform.position = Vector3.Lerp(activeCamera.transform.position, cameraTarget.transform.position, alpha*2f * Time.deltaTime);
 
-        if (timer1 > 1)
+        if (timer1 > 0.6)
         {
             enumCamera = EnumCamera.Zoom2;
             timer1 = 0;
@@ -195,9 +220,9 @@ public class CameraBehaviour : MonoBehaviour
     public void Zoom2()
     {
         timer2 += Time.deltaTime;
-        activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, cameraTarget.transform.localScale.x / 2f, alpha * Time.deltaTime);
+        activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, cameraTarget.transform.localScale.x / 2f, alpha*1.5f * Time.deltaTime);
 
-        if (timer2 > 1.35)
+        if (timer2 > 0.9)
         {
             enumCamera = EnumCamera.Zoom2;
             timer2 = 0;
@@ -209,9 +234,9 @@ public class CameraBehaviour : MonoBehaviour
     {
         isZoomingOut = true;
         timer3 += Time.deltaTime;
-        activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, zoomedOutSize, alpha*1.5f * Time.deltaTime);
+        activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, zoomedOutSize, alpha*2f * Time.deltaTime);
 
-        if (timer3 > 1.1)
+        if (timer3 > 0.6)
         {
             enumCamera = EnumCamera.Zoomout2;
             timer3 = 0;
@@ -221,9 +246,9 @@ public class CameraBehaviour : MonoBehaviour
     public void Zoomout2()
     {
         timer4 += Time.deltaTime;
-        activeCamera.transform.position = Vector3.Lerp(activeCamera.transform.position, cameraOrigin, alpha*1.5f * Time.deltaTime);
+        activeCamera.transform.position = Vector3.Lerp(activeCamera.transform.position, cameraOrigin, alpha*2f * Time.deltaTime);
 
-        if (timer4 > 1.1)
+        if (timer4 > 0.9)
         {
             enumCamera = EnumCamera.Playing;
             timer4 = 0;

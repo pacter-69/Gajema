@@ -1407,6 +1407,8 @@ MonoBehaviour:
   activeCamera: {fileID: 981856925}
   activePlayer: {fileID: 0}
   playerCanMove: 1
+  previousLayer: {fileID: 1042031598103612709, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  nextLayer: {fileID: -7589518806348717092, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   enumCamera: 0
 --- !u!1 &1156517788
 GameObject:
