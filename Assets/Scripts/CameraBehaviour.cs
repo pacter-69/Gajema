@@ -177,9 +177,9 @@ public class CameraBehaviour : MonoBehaviour
     {
         isZooming = true;
         timer1 += Time.deltaTime;
-        activeCamera.transform.position = Vector3.Lerp(activeCamera.transform.position, cameraTarget.transform.position, alpha-2f * Time.deltaTime);
+        activeCamera.transform.position = Vector3.Lerp(activeCamera.transform.position, cameraTarget.transform.position, (alpha-1.5f) * Time.deltaTime);
 
-        if (timer1 > 1.23)
+        if (timer1 > 1)
         {
             enumCamera = EnumCamera.Zoom2;
             timer1 = 0;
@@ -205,7 +205,7 @@ public class CameraBehaviour : MonoBehaviour
         timer3 += Time.deltaTime;
         activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, 5, alpha*1.5f * Time.deltaTime);
 
-        if (timer3 > 1.1)
+        if (timer3 > 0.8)
         {
             enumCamera = EnumCamera.Zoomout2;
             timer3 = 0;
@@ -217,7 +217,7 @@ public class CameraBehaviour : MonoBehaviour
         timer4 += Time.deltaTime;
         activeCamera.transform.position = Vector3.Lerp(activeCamera.transform.position, cameraOrigin, alpha*1.5f * Time.deltaTime);
 
-        if (timer4 > 1)
+        if (timer4 > 0.8)
         {
             enumCamera = EnumCamera.Playing;
             timer4 = 0;
