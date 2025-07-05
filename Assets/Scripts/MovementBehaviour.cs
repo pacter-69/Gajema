@@ -15,6 +15,8 @@ public class MovementBehaviour : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 targetPosition;
 
+    public CameraBehaviour camB;
+
     [SerializeField] private InputActionReference movementLeft;
     [SerializeField] private InputActionReference movementRight;
     [SerializeField] private InputActionReference movementUp;
@@ -53,7 +55,7 @@ public class MovementBehaviour : MonoBehaviour
     {
         cooldownTimer += Time.deltaTime;
 
-        if (!isMoving && cooldownTimer >= 0.4f)
+        if (!isMoving && cooldownTimer >= 0.4f && camB.playerCanMove && gameObject == camB.activePlayer)
         {
             Vector2Int direction = Vector2Int.zero;
 

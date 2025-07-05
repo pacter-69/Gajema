@@ -14,8 +14,9 @@ public class CameraBehaviour : MonoBehaviour
     public float zoomedOutSize = 5;
     private Vector3 camera1Origin, camera2Origin, camera3Origin;
     private Vector3 cameraOrigin;
-    public GameObject activeCamera;
-    private bool isZooming, isZoomingOut, playerCanMove = true;
+    public GameObject activeCamera, activePlayer;
+    private bool isZooming, isZoomingOut;
+    public bool playerCanMove = true;
     private float timer1, timer2, timer3, timer4, zoomTimer;
     public enum EnumCamera
     {
@@ -36,6 +37,7 @@ public class CameraBehaviour : MonoBehaviour
         {
             activeCamera.GetComponent<Camera>().depth = 1;
             cameraTarget = camera1Target;
+            activePlayer = cameraTarget;
             activeCamera.tag = "MainCamera";
             cameraOrigin = camera1Origin;
 
@@ -48,6 +50,7 @@ public class CameraBehaviour : MonoBehaviour
             cameraTarget = camera2Target;
             activeCamera.tag = "MainCamera";
             cameraOrigin = camera2Origin;
+            activePlayer = cameraTarget;
 
             camera3.GetComponent<Camera>().depth = 0;
             camera1.GetComponent<Camera>().depth = -1;
@@ -58,6 +61,7 @@ public class CameraBehaviour : MonoBehaviour
             cameraTarget = camera3Target;
             activeCamera.tag = "MainCamera";
             cameraOrigin = camera3Origin;
+            activePlayer = cameraTarget;
 
             camera2.GetComponent<Camera>().depth = 0;
             camera1.GetComponent<Camera>().depth = -1;
@@ -74,6 +78,7 @@ public class CameraBehaviour : MonoBehaviour
             cameraTarget = camera1Target;
             activeCamera.tag = "MainCamera";
             cameraOrigin = camera1Origin;
+            activePlayer = cameraTarget;
 
             camera2.GetComponent<Camera>().depth = 0;
             camera3.GetComponent<Camera>().depth = -1;
@@ -84,6 +89,7 @@ public class CameraBehaviour : MonoBehaviour
             cameraTarget = camera2Target;
             activeCamera.tag = "MainCamera";
             cameraOrigin = camera2Origin;
+            activePlayer = cameraTarget;
 
             camera3.GetComponent<Camera>().depth = 0;
             camera1.GetComponent<Camera>().depth = -1;
@@ -94,6 +100,7 @@ public class CameraBehaviour : MonoBehaviour
             cameraTarget = camera3Target;
             activeCamera.tag = "MainCamera";
             cameraOrigin = camera3Origin;
+            activePlayer = cameraTarget;
 
             camera2.GetComponent<Camera>().depth = 0;
             camera1.GetComponent<Camera>().depth = -1;
@@ -137,12 +144,12 @@ public class CameraBehaviour : MonoBehaviour
                     if (activeCamera == camera3)
                     {
                         activeCamera = camera2;
-                        activeCamera.GetComponent<Camera>().orthographicSize = cameraTarget.transform.localScale.x / 1.8f;
+                        activeCamera.GetComponent<Camera>().orthographicSize = cameraTarget.transform.localScale.x / 2f; //1.8f
                     }
                     else if (activeCamera == camera2)
                     {
                         activeCamera = camera1;
-                        activeCamera.GetComponent<Camera>().orthographicSize = 0.285f;
+                        activeCamera.GetComponent<Camera>().orthographicSize = cameraTarget.transform.localScale.x / 2f;
                     }
 
                     timer1 = 0;
@@ -164,7 +171,6 @@ public class CameraBehaviour : MonoBehaviour
                 Zoomout2();
                 break;
         }
-
 
         if(isZoomingOut || isZooming)
         {
@@ -189,7 +195,7 @@ public class CameraBehaviour : MonoBehaviour
     public void Zoom2()
     {
         timer2 += Time.deltaTime;
-        activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, cameraTarget.transform.localScale.x / 2.1f, alpha * Time.deltaTime);
+        activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, cameraTarget.transform.localScale.x / 2f, alpha * Time.deltaTime);
 
         if (timer2 > 1.35)
         {
@@ -203,9 +209,9 @@ public class CameraBehaviour : MonoBehaviour
     {
         isZoomingOut = true;
         timer3 += Time.deltaTime;
-        activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, 5, alpha*1.5f * Time.deltaTime);
+        activeCamera.GetComponent<Camera>().orthographicSize = Mathf.Lerp(activeCamera.GetComponent<Camera>().orthographicSize, zoomedOutSize, alpha*1.5f * Time.deltaTime);
 
-        if (timer3 > 0.8)
+        if (timer3 > 1.1)
         {
             enumCamera = EnumCamera.Zoomout2;
             timer3 = 0;
@@ -217,7 +223,7 @@ public class CameraBehaviour : MonoBehaviour
         timer4 += Time.deltaTime;
         activeCamera.transform.position = Vector3.Lerp(activeCamera.transform.position, cameraOrigin, alpha*1.5f * Time.deltaTime);
 
-        if (timer4 > 0.8)
+        if (timer4 > 1.1)
         {
             enumCamera = EnumCamera.Playing;
             timer4 = 0;
