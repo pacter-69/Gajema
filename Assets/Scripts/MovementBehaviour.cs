@@ -26,7 +26,7 @@ public class MovementBehaviour : MonoBehaviour
 
     [SerializeField] private Transform limitXPlus, limitXMinus, limitYPlus, limitYMinus;
 
-    private Vector2Int currentGridPosition;
+    public Vector2Int currentGridPosition;
 
     AudioManager audioManager;
 
@@ -44,8 +44,8 @@ public class MovementBehaviour : MonoBehaviour
         // Start in grid space, convert from world
         Vector3 worldPos = transform.position;
         currentGridPosition = new Vector2Int(
-            Mathf.RoundToInt(worldPos.x / stepSize),
-                Mathf.RoundToInt(worldPos.y / stepSize)
+            Mathf.RoundToInt(worldPos.x / stepSize), // worldPos.x / stepSize
+                Mathf.RoundToInt(worldPos.y / stepSize) // worldPos.y / stepSize
             );
 
         SnapToGrid();

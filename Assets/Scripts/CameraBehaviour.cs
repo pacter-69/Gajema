@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CameraBehaviour : MonoBehaviour
 {
@@ -136,6 +135,10 @@ public class CameraBehaviour : MonoBehaviour
                     }
 
                     enumCamera = EnumCamera.Playing;
+                    if (activeCamera == camera1)
+                    {
+                        activeCamera.transform.position = camera1Origin;
+                    }
                     if (activeCamera == camera2)
                     {
                         activeCamera.transform.position = camera2Origin;
