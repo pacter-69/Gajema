@@ -53,16 +53,35 @@ public class MovementBehaviour : MonoBehaviour
 
     private void Update()
     {
+        float angle;
         cooldownTimer += Time.deltaTime;
 
-        if (!isMoving && cooldownTimer >= 0.4f && camB.playerCanMove && gameObject == camB.activePlayer)
+        if (!isMoving && cooldownTimer >= 0.225f && camB.playerCanMove && gameObject == camB.activePlayer) //0.4
         {
             Vector2Int direction = Vector2Int.zero;
 
-            if (movementLeft.action.IsInProgress()) direction = Vector2Int.left;
-            else if (movementRight.action.IsInProgress()) direction = Vector2Int.right;
-            else if (movementUp.action.IsInProgress()) direction = Vector2Int.up;
-            else if (movementDown.action.IsInProgress()) direction = Vector2Int.down;
+            if (movementLeft.action.IsInProgress())
+            {
+                direction = Vector2Int.left;
+            }
+            else if (movementRight.action.IsInProgress())
+            {
+                direction = Vector2Int.right;
+            }
+            else if (movementUp.action.IsInProgress())
+            {
+                direction = Vector2Int.up;
+            }
+            else if (movementDown.action.IsInProgress())
+            {
+                direction = Vector2Int.down;
+            }
+
+            if (camB.activePlayer == camB.camera3Target && (movementDown.action.IsInProgress() || movementUp.action.IsInProgress() || movementRight.action.IsInProgress() || movementLeft.action.IsInProgress()))
+            {
+                angle = Vector2.SignedAngle(Vector2.up, direction);
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
 
             if (direction != Vector2Int.zero)
             {
