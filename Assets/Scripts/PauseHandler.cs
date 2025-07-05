@@ -30,8 +30,8 @@ public class PauseHandler : MonoBehaviour
             }
 
         }
-        audioManager.MusicVolume(musicSlider.value);
-        audioManager.SFXVolume(SFXSlider.value);
+        //audioManager.MusicVolume(musicSlider.value);
+        //audioManager.SFXVolume(SFXSlider.value);
     }
     public void PauseGame()
     {

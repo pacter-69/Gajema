@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
+using static MagnetBehaviour;
 
 public class BoxBehaviour : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class BoxBehaviour : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 startPosition;
     private float moveTimer = 0f;
+    public bool magnet;
+
 
     AudioManager audioManager;
     private void Awake()
@@ -18,21 +21,56 @@ public class BoxBehaviour : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioManager>();
     }
 
-    private Vector2Int lastDirection;
-    private System.Func<Vector2Int, bool> isBlockedFunc;
+    public Vector2Int lastDirection;
+    public System.Func<Vector2Int, bool> isBlockedFunc;
     public Type type;
     public enum Type
     {
         Normal,
         Steel,
-        Linked
+        Linked, 
+        Magnet
     }
 
     [Header("Linked boxes")]
     public BoxBehaviour[] otherBoxes;
 
+    public enum RayDirection {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
+    public RayDirection currentDirection;
+    Vector2Int magnetDirection;
+    public float rayDistance;
+
     private void Start()
     {
+        if (type == Type.Steel)
+        {
+            transform.gameObject.tag = "Metal";
+        }
+        else if (type == Type.Magnet) 
+        {
+            switch (currentDirection)
+            {
+                case RayDirection.Up:
+                    magnetDirection = Vector2Int.up;
+                    break;
+                case RayDirection.Down:
+                    magnetDirection = Vector2Int.down;
+                    break;
+                case RayDirection.Left:
+                    magnetDirection = Vector2Int.left;
+                    break;
+                case RayDirection.Right:
+                    magnetDirection = Vector2Int.right;
+                    break;
+            }
+        }
+        magnet = false;
         stepSize = GetComponentInParent<Grid>().cellSize.x;
         SnapToGrid();
         SetBlockChecker(isBlockedFunc);
@@ -61,6 +99,39 @@ public class BoxBehaviour : MonoBehaviour
                 }
             }
 
+            if (magnet && type == Type.Steel)
+            {
+                Debug.Log(isBlockedFunc(current + magnetDirection));
+                if (magnetDirection != Vector2Int.zero && !isBlockedFunc(current + magnetDirection))
+                {
+                    Debug.Log("caca");
+                    TryPush(magnetDirection*-1, current, isBlockedFunc);
+                    return;
+                }
+            }
+
+            if(type == Type.Magnet)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, 0.55f, 0), magnetDirection, rayDistance);
+                Debug.DrawRay(transform.position + new Vector3(0, 0.55f, 0), (Vector2)magnetDirection * rayDistance, Color.red);
+                if (hit.collider.gameObject != null)
+                {
+                    Debug.Log(hit.collider.gameObject.tag == "Metal");
+                    Debug.Log(hit.collider.name);
+                    var box = hit.collider.gameObject.GetComponent<BoxBehaviour>();
+                    if (hit.collider.gameObject.tag == "Metal")
+                    {
+                        box.magnet = true;
+                        box.magnetDirection = magnetDirection;
+                        box.SetBlockChecker(box.isBlockedFunc);
+                    }
+                    else
+                    {
+                        box.magnet = false;
+                    }
+                }
+            }  
+
             hasSavedThisSlide = false; // reset for the next slide chain
         }
 
@@ -75,12 +146,13 @@ public class BoxBehaviour : MonoBehaviour
                 isMoving = false;
             }
         }
+        
     }
 
 
     public bool TryPush(Vector2Int direction, Vector2Int currentBoxGridPos, System.Func<Vector2Int, bool> isBlocked)
     {
-        if (GetComponentInParent<LayerBehaviour>().isSticky || type == BoxBehaviour.Type.Steel || isMoving)
+        if (GetComponentInParent<LayerBehaviour>().isSticky || (type == BoxBehaviour.Type.Steel && !magnet) || isMoving)
         { return false; }
 
         Vector2Int nextPos = currentBoxGridPos + direction;
@@ -154,6 +226,11 @@ public class BoxBehaviour : MonoBehaviour
             LayerBehaviour.WindDirection.West => Vector2Int.left,
             _ => Vector2Int.zero
         };
+    }
+
+    public void GoToMagnet(Vector2Int dir)
+    {
+        TryPush(dir, GetGridPosition(), isBlockedFunc);
     }
 
 
