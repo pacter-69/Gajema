@@ -1,20 +1,21 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuBehaviour : MonoBehaviour
 {
+    //Conecto con transition
+    public FadeTransition fade;
     public string levelSelector, tutorial;
 
     public void StartGame()
     {
-        SceneManager.LoadScene(levelSelector);
+        fade.FadeToBlack(levelSelector);
     }
 
     public void Tutorial()
     {
-        SceneManager.LoadScene(tutorial);
+        fade.FadeToBlack(tutorial);
     }
-
+    
     public void Close()
     {
         Application.Quit();

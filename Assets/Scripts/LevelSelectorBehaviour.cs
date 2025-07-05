@@ -8,6 +8,8 @@ public class LevelSelectorBehaviour : MonoBehaviour, IDataPersistence
     public List<LevelButton> allLevels;
     public int levelsUnlocked;
 
+    public FadeTransition fade; //Añadido para transición
+
     public void Awake()
     {
         for (int i = 1; i <= allLevels.Count; i++)
@@ -25,4 +27,17 @@ public class LevelSelectorBehaviour : MonoBehaviour, IDataPersistence
     {
         data.completedLevels = levelsUnlocked;
     }
+    
+
+    
+    public void LoadLevel(int levelNumber) //Añadido para transición
+    {
+        string sceneName = "Level" + levelNumber;
+        fade.FadeToBlack(sceneName);
+    }
+    /* Nota: El script o los scripts LevelButton no los he tocado pero entiendo que es por lo de bloquear los
+    niveles. Si es conflictivo con mis cambios avisar. Quizás sea más fácil añadir referencias gameObject de 
+    los botones nivel y gestionar los bloqueos y el desbloqueo debug
+    todo desde este mismo Script*/
+
 }
