@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 107182989}
   - component: {fileID: 107182991}
   - component: {fileID: 107182990}
-  - component: {fileID: 107182992}
   m_Layer: 0
   m_Name: Stars2
   m_TagString: Untagged
@@ -877,21 +876,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &107182992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107182988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 881889b2b3f51ab42bda8a60118fa925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iceSprite: {fileID: 21300000, guid: 1ee0b32e84ab9af4198fd28add3c1658, type: 3}
-  windSprite: {fileID: 0}
-  celoSprite: {fileID: 0}
 --- !u!1 &146328606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,7 +2062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ee4d28127bc0c479922a78b60811ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars: {fileID: 0}
+  stars: {fileID: 981856931}
+  layer2: {fileID: 1222167954}
+  star2Tilemap: {fileID: 107182991}
 --- !u!1 &409953901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,7 +2076,6 @@ GameObject:
   - component: {fileID: 409953902}
   - component: {fileID: 409953905}
   - component: {fileID: 409953904}
-  - component: {fileID: 409953903}
   m_Layer: 0
   m_Name: Layer3
   m_TagString: Untagged
@@ -2115,22 +2100,6 @@ Transform:
   - {fileID: 1493327726}
   m_Father: {fileID: 742321935}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &409953903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409953901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2f5900ba61e914090a7e9fb1186c8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isIce: 0
-  isSticky: 0
-  isWindy: 0
-  wDirection: 0
 --- !u!114 &409953904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3508,6 +3477,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &572079908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2103224576329033776, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+  m_PrefabInstance: {fileID: 1198581976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!19719996 &572079912
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572079908}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!4 &646642315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8956512576781442670, guid: 9eb2b3d611aa99c4b998c68b123e55e7, type: 3}
@@ -3751,7 +3763,7 @@ GameObject:
   - component: {fileID: 879108214}
   m_Layer: 0
   m_Name: Ice1
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4008,7 +4020,7 @@ GameObject:
   - component: {fileID: 980503956}
   m_Layer: 0
   m_Name: Wind1
-  m_TagString: Untagged
+  m_TagString: Wind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4399,7 +4411,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceSprite: {fileID: 21300000, guid: 1ee0b32e84ab9af4198fd28add3c1658, type: 3}
   windSprite: {fileID: -6133653121382518240, guid: 65c62286ae416f041a642cbc8b74e235, type: 3}
-  celoSprite: {fileID: 0}
+  celoSprite: {fileID: 21300000, guid: cb90cb6a68d8dc74f8301f719840871f, type: 3}
+  starFloor2: {fileID: 21300000, guid: 2729eee85d49dfd49adae278233599e1, type: 3}
+  starFloor3: {fileID: 21300000, guid: 23376c75ec37dae46a63793f8befad22, type: 3}
 --- !u!1 &1156517788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4606,6 +4620,10 @@ PrefabInstance:
     - target: {fileID: 2103224576329033776, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_Name
       value: Floor1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103224576329033776, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 3076242856442589141, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_Name
@@ -6377,6 +6395,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1962932305}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2103224576329033776, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 572079912}
     - targetCorrespondingSourceObject: {fileID: 7216535730782213526, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       insertIndex: -1
       addedObject: {fileID: 396813791}
@@ -6427,7 +6448,6 @@ GameObject:
   - component: {fileID: 1222167955}
   - component: {fileID: 1222167958}
   - component: {fileID: 1222167957}
-  - component: {fileID: 1222167956}
   m_Layer: 0
   m_Name: Layer2
   m_TagString: Untagged
@@ -6452,22 +6472,6 @@ Transform:
   - {fileID: 1160997762}
   m_Father: {fileID: 742321935}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1222167956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222167954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2f5900ba61e914090a7e9fb1186c8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isIce: 0
-  isSticky: 0
-  isWindy: 0
-  wDirection: 0
 --- !u!114 &1222167957
 MonoBehaviour:
   m_ObjectHideFlags: 0

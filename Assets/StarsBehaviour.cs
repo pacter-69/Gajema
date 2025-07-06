@@ -6,18 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class StarsBehaviour : MonoBehaviour
 {
-    public Sprite iceSprite, windSprite, celoSprite;
+    public Sprite iceSprite, windSprite, celoSprite, starFloor2, starFloor3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void IceChanger(Tilemap tilemap)
     {
@@ -70,7 +60,40 @@ public class StarsBehaviour : MonoBehaviour
                 tilemap.SetTile(pos, newTile);
             }
         }
+    }
 
-        //tilemap.gameObject.GetComponent
+    public void Floor2Changer(Tilemap tilemap)
+    {
+        foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
+        {
+            TileBase tile = tilemap.GetTile(pos);
+            if (tile is Tile originalTile)
+            {
+                Tile newTile = ScriptableObject.CreateInstance<Tile>();
+                newTile.sprite = starFloor2;
+                newTile.color = originalTile.color;
+                newTile.colliderType = originalTile.colliderType;
+                newTile.transform = originalTile.transform;
+
+                tilemap.SetTile(pos, newTile);
+            }
+        }
+    }
+    public void Floor3Changer(Tilemap tilemap)
+    {
+        foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
+        {
+            TileBase tile = tilemap.GetTile(pos);
+            if (tile is Tile originalTile)
+            {
+                Tile newTile = ScriptableObject.CreateInstance<Tile>();
+                newTile.sprite = starFloor3;
+                newTile.color = originalTile.color;
+                newTile.colliderType = originalTile.colliderType;
+                newTile.transform = originalTile.transform;
+
+                tilemap.SetTile(pos, newTile);
+            }
+        }
     }
 }

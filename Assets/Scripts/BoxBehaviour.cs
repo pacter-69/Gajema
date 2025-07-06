@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class BoxBehaviour : MonoBehaviour
 {
     public float stepSize = 1f;
     public float moveDuration = 0.1f;
+
+    public TilemapCollider2D iceTilemapCollider, windTilemapCollider, celoTilemapCollider;
 
     private bool isMoving = false;
     private bool hasSavedThisSlide = false;
@@ -53,7 +56,7 @@ public class BoxBehaviour : MonoBehaviour
                     return;
                 }
             }
-            else if (IsIceActive())
+            else if (IsIceActive() && GetComponent<Collider2D>().IsTouching())
             {
                 if (lastDirection != Vector2Int.zero && !isBlockedFunc(current + lastDirection))
                 {
