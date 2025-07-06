@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorHandler : MonoBehaviour
@@ -6,9 +7,18 @@ public class DoorHandler : MonoBehaviour
     public GameObject door;
     void Start()
     {
-        door.GetComponent<SpriteRenderer>().color = button.GetComponent<SpriteRenderer>().color;
+        if (door.GetComponent<SpriteRenderer>() != null)
+        {
+            door.GetComponent<SpriteRenderer>().color = button.GetComponent<SpriteRenderer>().color;
+        }
+        else
+        {
+            foreach (SpriteRenderer spr in door.GetComponentsInChildren<SpriteRenderer>())
+            {
+                spr.color = button.GetComponent<SpriteRenderer>().color;
+            }
+        }
     }
-
     void Update()
     {
         if (button.buttonPressed)
@@ -18,6 +28,18 @@ public class DoorHandler : MonoBehaviour
         else
         {
             door.SetActive(true);
+
+            if (door.GetComponent<SpriteRenderer>() != null)
+            {
+                door.GetComponent<SpriteRenderer>().color = button.GetComponent<SpriteRenderer>().color;
+            }
+            else
+            {
+                foreach (SpriteRenderer spr in door.GetComponentsInChildren<SpriteRenderer>())
+                {
+                    spr.color = button.GetComponent<SpriteRenderer>().color;
+                }
+            }
         }
     }
 }
