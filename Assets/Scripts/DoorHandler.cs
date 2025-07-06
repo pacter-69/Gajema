@@ -6,7 +6,7 @@ public class DoorHandler : MonoBehaviour
     public GameObject door;
     void Start()
     {
-        
+        door.GetComponent<SpriteRenderer>().color = button.GetComponent<SpriteRenderer>().color;
     }
 
     void Update()
