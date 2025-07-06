@@ -44,7 +44,7 @@ public class Layer1ElementBehaviour : MonoBehaviour
 
             stars.CeloChanger(star2Tilemap);
         }
-        else
+        else if (collision.CompareTag("Floor"))
         {
             layer2.GetComponent<LayerBehaviour>().isIce = false;
             layer2.GetComponent<LayerBehaviour>().isSticky = false;

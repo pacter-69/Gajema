@@ -45,7 +45,7 @@ public class BoxBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (!isMoving)
+        if (!isMoving && !isInCelo)
         {
             Vector2Int current = GetGridPosition();
 

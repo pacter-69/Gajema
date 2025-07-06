@@ -877,6 +877,17 @@
             "bindings": [
                 {
                     "name": "",
+                    "id": "f865e14f-8399-4423-a483-57b92f39e36c",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Previous Layer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9cf45b1d-5b31-4c23-9686-95a5169dba77",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -890,6 +901,17 @@
                     "name": "",
                     "id": "c9259aef-dc2c-4e12-bc5a-28f352403e5a",
                     "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next Layer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85ec1fb8-e26d-4d41-9cc9-c15b4fdaef11",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
