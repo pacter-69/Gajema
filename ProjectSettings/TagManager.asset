@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Sound
+  - Ice
+  - Wind
+  - Celo
+  - Floor
   layers:
   - Default
   - TransparentFX
