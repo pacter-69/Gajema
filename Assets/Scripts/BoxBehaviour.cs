@@ -95,7 +95,7 @@ public class BoxBehaviour : MonoBehaviour
         // Save once at the beginning of the slide
         if (!hasSavedThisSlide)
         {
-            Save();
+            //Save();
             hasSavedThisSlide = true;
         }
 

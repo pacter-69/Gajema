@@ -85,6 +85,7 @@ public class MovementBehaviour : MonoBehaviour
 
             if (direction != Vector2Int.zero)
             {
+                Save();
                 Vector2Int nextPos = currentGridPosition + direction;
                 GameObject boxObj = GetPushableAt(nextPos);
 
@@ -106,7 +107,7 @@ public class MovementBehaviour : MonoBehaviour
                         Mathf.RoundToInt(worldPos.x / stepSize),
                             Mathf.RoundToInt(worldPos.y / stepSize)
                         );
-                    Save();
+                    
                     StartMovement(direction); // Valid empty tile, move the player
                 }
             }
