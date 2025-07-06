@@ -11,14 +11,16 @@ public class AudioManager : MonoBehaviour
     public AudioClip button;
     public AudioClip push;
     public AudioClip walk;
+    public AudioClip Z;
+
 
     private void Start()
     {
         musicSource.clip = background;
         musicSource.volume = 0.25f;
+        musicSource.loop = true;
         musicSource.Play();
     }
-
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.clip = clip;

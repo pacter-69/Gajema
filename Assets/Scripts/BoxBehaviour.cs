@@ -77,6 +77,7 @@ public class BoxBehaviour : MonoBehaviour
 
             if (t >= 1f)
             {
+                audioManager.PlaySFX(audioManager.push);
                 isMoving = false;
             }
         }
