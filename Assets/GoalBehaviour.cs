@@ -7,6 +7,11 @@ public class GoalBehaviour : MonoBehaviour, IDataPersistence
     [SerializeField] private int levelNumber;
     public GameObject WinPanel;
     public GameObject Canvas;
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioManager>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<MovementBehaviour>() != null)
@@ -30,6 +35,7 @@ public class GoalBehaviour : MonoBehaviour, IDataPersistence
 
     void Win()
     {
+        audioManager.PlaySFX(audioManager.Win);
         WinPanel.SetActive(true);
         Canvas.SetActive(false);
         DataPersistenceManager.instance.SaveGame();
