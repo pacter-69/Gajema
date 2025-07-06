@@ -16,6 +16,7 @@ public class MenuBehaviour : MonoBehaviour
         fade.FadeToBlack(tutorial);
     }
     
+    
     public void Close()
     {
         Application.Quit();

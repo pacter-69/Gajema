@@ -30,6 +30,12 @@ public class FadeTransition : MonoBehaviour
         StartCoroutine(FadeAndLoadScene(sceneName));
     }
 
+    public void BackToMenu(string sceneName)
+    {
+        fadeImage = null;
+        SceneManager.LoadScene(sceneName);
+    }
+
     private IEnumerator FadeAndLoadScene(string sceneName)
     {
         yield return FadeTo(1f, fadeDuration);
