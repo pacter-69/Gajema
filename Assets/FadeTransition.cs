@@ -27,6 +27,7 @@ public class FadeTransition : MonoBehaviour
 
     public void FadeToBlack(string sceneName)
     {
+        Time.timeScale = 1;
         StartCoroutine(FadeAndLoadScene(sceneName));
     }
 
@@ -38,8 +39,8 @@ public class FadeTransition : MonoBehaviour
 
     private IEnumerator FadeAndLoadScene(string sceneName)
     {
-        yield return FadeTo(1f, fadeDuration);
         SceneManager.LoadScene(sceneName);
+        yield return FadeTo(1f, fadeDuration);
     }
 
     private IEnumerator FadeTo(float targetAlpha, float duration)
