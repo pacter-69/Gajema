@@ -5245,15 +5245,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: isIce
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: isWindy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: isSticky
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: wDirection
