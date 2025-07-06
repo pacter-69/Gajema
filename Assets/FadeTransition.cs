@@ -27,14 +27,11 @@ public class FadeTransition : MonoBehaviour
 
     public void FadeToBlack(string sceneName)
     {
+        Debug.Log(sceneName);
+        Time.timeScale = 1;
         StartCoroutine(FadeAndLoadScene(sceneName));
     }
 
-    public void BackToMenu(string sceneName)
-    {
-        fadeImage = null;
-        SceneManager.LoadScene(sceneName);
-    }
 
     private IEnumerator FadeAndLoadScene(string sceneName)
     {
