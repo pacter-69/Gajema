@@ -8,6 +8,11 @@ public class ControlZ : MonoBehaviour
 
     private List<Transform> trackedObjects = new List<Transform>();
     private float timer = 0f, cooldown = 0.1f;
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioManager>();
+    }
 
     private void Start()
     {
@@ -24,6 +29,8 @@ public class ControlZ : MonoBehaviour
         if (Input.GetKey(KeyCode.Z) && timer >= cooldown)
         {
             LoadScene();
+            
+            audioManager.PlaySFX(audioManager.Z);
             timer = 0f;
         }
     }
