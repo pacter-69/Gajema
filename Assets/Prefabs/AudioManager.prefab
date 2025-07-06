@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 5, z: 0.044260945}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4859724, y: 1.4859724, z: 1.4859724}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6626112211755966527}
@@ -52,6 +52,8 @@ MonoBehaviour:
   button: {fileID: 8300000, guid: 1086804bff3ff24488d81b7daa721099, type: 3}
   push: {fileID: 8300000, guid: 1aed113dd59863f4d9bf7505a6e74ced, type: 3}
   walk: {fileID: 8300000, guid: 0da40c594aa2071448a55c8323522fd7, type: 3}
+  Z: {fileID: 8300000, guid: 99521e2abf4804a43a1e051038397254, type: 3}
+  Win: {fileID: 8300000, guid: 397a7037b20e7614a8927f9fe8cdbe24, type: 3}
 --- !u!1 &2833673496107123362
 GameObject:
   m_ObjectHideFlags: 0
