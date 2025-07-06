@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GoalBehaviour : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private int levelNumber;
+    public GameObject WinPanel;
+    public GameObject Canvas;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<MovementBehaviour>() != null)
@@ -27,7 +30,8 @@ public class GoalBehaviour : MonoBehaviour, IDataPersistence
 
     void Win()
     {
+        WinPanel.SetActive(true);
+        Canvas.SetActive(true);
         DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadScene("Level Selector");
     }
 }
