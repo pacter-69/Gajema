@@ -45,7 +45,7 @@ public class BoxBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (!isMoving && !isInCelo)
+        if (!isMoving)
         {
             Vector2Int current = GetGridPosition();
 
@@ -86,7 +86,7 @@ public class BoxBehaviour : MonoBehaviour
 
     public bool TryPush(Vector2Int direction, Vector2Int currentBoxGridPos, System.Func<Vector2Int, bool> isBlocked)
     {
-        if (GetComponentInParent<LayerBehaviour>().isSticky || type == BoxBehaviour.Type.Steel || isMoving)
+        if ((GetComponentInParent<LayerBehaviour>().isSticky && isInCelo) || type == BoxBehaviour.Type.Steel || isMoving)
         { return false; }
 
         Vector2Int nextPos = currentBoxGridPos + direction;
