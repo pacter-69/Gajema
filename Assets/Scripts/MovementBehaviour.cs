@@ -56,7 +56,7 @@ public class MovementBehaviour : MonoBehaviour
         float angle;
         cooldownTimer += Time.deltaTime;
 
-        if (!isMoving && cooldownTimer >= 0.225f && camB.playerCanMove && gameObject == camB.activePlayer) //0.4
+        if (!isMoving && cooldownTimer >= 0.3f && camB.playerCanMove && gameObject == camB.activePlayer) //0.4
         {
             Vector2Int direction = Vector2Int.zero;
 

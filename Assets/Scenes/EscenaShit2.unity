@@ -2039,7 +2039,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3874631177637198415, guid: 096b3df5514a0904a9d114d29994be48, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4979135376686052782, guid: 096b3df5514a0904a9d114d29994be48, type: 3}
       propertyPath: m_LocalScale.x
@@ -5430,7 +5430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceSprite: {fileID: 21300000, guid: 1ee0b32e84ab9af4198fd28add3c1658, type: 3}
   windSprite: {fileID: -6133653121382518240, guid: 65c62286ae416f041a642cbc8b74e235, type: 3}
-  celoSprite: {fileID: 21300000, guid: 23376c75ec37dae46a63793f8befad22, type: 3}
+  celoSprite: {fileID: -8017939049192400614, guid: b9579d10d2bfa974fb7f1d828b355049, type: 3}
   normalFloor1: {fileID: 21300000, guid: 3278b2dbbeacea44fbffb72c4bf79559, type: 3}
   starFloor2: {fileID: 21300000, guid: 2729eee85d49dfd49adae278233599e1, type: 3}
   starFloor3: {fileID: 21300000, guid: 23376c75ec37dae46a63793f8befad22, type: 3}
