@@ -11,4 +11,11 @@ public class LayerBehaviour : MonoBehaviour {
     }
     public WindDirection wDirection;
 
+    public void Update()
+    {
+        isIce = true;
+        isSticky = true;
+        isWindy = true;
+    }
+
 }
