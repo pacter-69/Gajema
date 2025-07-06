@@ -31,7 +31,7 @@ public class GoalBehaviour : MonoBehaviour, IDataPersistence
     void Win()
     {
         WinPanel.SetActive(true);
-        Canvas.SetActive(true);
+        Canvas.SetActive(false);
         DataPersistenceManager.instance.SaveGame();
     }
 }
