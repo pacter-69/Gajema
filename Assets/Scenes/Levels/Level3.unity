@@ -4001,7 +4001,7 @@ MonoBehaviour:
   isIce: 1
   isSticky: 1
   isWindy: 1
-  wDirection: 0
+  wDirection: 1
 --- !u!212 &409953905
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7057,11 +7057,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5069173409511629819, guid: 6c3480ac9fabf9143a8b308617a3706b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.63
+      value: -9.73
       objectReference: {fileID: 0}
     - target: {fileID: 5069173409511629819, guid: 6c3480ac9fabf9143a8b308617a3706b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.55
+      value: -0.53
       objectReference: {fileID: 0}
     - target: {fileID: 5069173409511629819, guid: 6c3480ac9fabf9143a8b308617a3706b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10012,15 +10012,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: isIce
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: isWindy
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: isSticky
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: wDirection
@@ -12125,10 +12125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2f5900ba61e914090a7e9fb1186c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIce: 0
-  isSticky: 0
-  isWindy: 0
-  wDirection: 0
+  isIce: 1
+  isSticky: 1
+  isWindy: 1
+  wDirection: 1
 --- !u!212 &1222167958
 SpriteRenderer:
   m_ObjectHideFlags: 0
