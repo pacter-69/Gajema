@@ -184,7 +184,7 @@ public class BoxBehaviour : MonoBehaviour
             isInWind = true;
         }
 
-        if ((collision.gameObject == starTilemapCollider || windTilemapCollider) && collision.gameObject.CompareTag("Celo"))
+        if ((collision.gameObject == starTilemapCollider || celoTilemapCollider) && collision.gameObject.CompareTag("Celo"))
         {
             isInIce = false;
             isInCelo = true;

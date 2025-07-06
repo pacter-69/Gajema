@@ -53,4 +53,13 @@ public class Layer1ElementBehaviour : MonoBehaviour
             stars.Floor2Changer(star2Tilemap);
         }
     }
+
+    public void OnTriggerExit(Collider other)
+    {
+        layer2.GetComponent<LayerBehaviour>().isIce = false;
+        layer2.GetComponent<LayerBehaviour>().isSticky = false;
+        layer2.GetComponent<LayerBehaviour>().isWindy = false;
+
+        stars.Floor2Changer(star2Tilemap);
+    }
 }
