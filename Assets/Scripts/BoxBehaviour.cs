@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
@@ -7,10 +8,11 @@ public class BoxBehaviour : MonoBehaviour
     public float stepSize = 1f;
     public float moveDuration = 0.1f;
 
-    public TilemapCollider2D iceTilemapCollider, windTilemapCollider, celoTilemapCollider;
+    public TilemapCollider2D iceTilemapCollider, windTilemapCollider, celoTilemapCollider, starTilemapCollider, floorTilemapCollider;
 
     private bool isMoving = false;
     private bool hasSavedThisSlide = false;
+    [SerializeField] private bool isInIce, isInWind, isInCelo;
     private Vector3 targetPosition;
     private Vector3 startPosition;
     private float moveTimer = 0f;
@@ -47,7 +49,7 @@ public class BoxBehaviour : MonoBehaviour
         {
             Vector2Int current = GetGridPosition();
 
-            if (IsWindActive() && type != Type.Steel)
+            if (IsWindActive() && type != Type.Steel && isInWind)
             {
                 Vector2Int windDir = GetWindDirection();
                 if (windDir != Vector2Int.zero && !isBlockedFunc(current + windDir))
@@ -56,7 +58,7 @@ public class BoxBehaviour : MonoBehaviour
                     return;
                 }
             }
-            else if (IsIceActive() && GetComponent<Collider2D>().IsTouching())
+            else if (IsIceActive() && isInIce)
             {
                 if (lastDirection != Vector2Int.zero && !isBlockedFunc(current + lastDirection))
                 {
@@ -163,5 +165,37 @@ public class BoxBehaviour : MonoBehaviour
     private void Save()
     {
         GetComponentInParent<ControlZ>()?.SaveScene();
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("toy en collider");
+        if((collision.gameObject == starTilemapCollider || iceTilemapCollider) && collision.gameObject.CompareTag("Ice"))
+        {
+            isInIce = true;
+            isInCelo = false;
+            isInWind = false;
+        }
+
+        if ((collision.gameObject == starTilemapCollider || windTilemapCollider) && collision.gameObject.CompareTag("Wind"))
+        {
+            isInIce = false;
+            isInCelo = false;
+            isInWind = true;
+        }
+
+        if ((collision.gameObject == starTilemapCollider || windTilemapCollider) && collision.gameObject.CompareTag("Celo"))
+        {
+            isInIce = false;
+            isInCelo = true;
+            isInWind = false;
+        }
+
+        if ((collision.gameObject == starTilemapCollider || floorTilemapCollider) && collision.gameObject.CompareTag("Floor"))
+        {
+            isInIce = false;
+            isInCelo = false;
+            isInWind = false;
+        }
     }
 }

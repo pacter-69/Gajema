@@ -23,6 +23,7 @@ public class StarsBehaviour : MonoBehaviour
                 newTile.transform = originalTile.transform;
 
                 tilemap.SetTile(pos, newTile);
+                tilemap.gameObject.tag = "Ice";
             }
         }
     }
@@ -40,6 +41,7 @@ public class StarsBehaviour : MonoBehaviour
                 newTile.transform = originalTile.transform;
 
                 tilemap.SetTile(pos, newTile);
+                tilemap.gameObject.tag = "Wind";
             }
         }
     }
@@ -58,6 +60,7 @@ public class StarsBehaviour : MonoBehaviour
                 newTile.transform = originalTile.transform;
 
                 tilemap.SetTile(pos, newTile);
+                tilemap.gameObject.tag = "Celo";
             }
         }
     }
@@ -76,6 +79,7 @@ public class StarsBehaviour : MonoBehaviour
                 newTile.transform = originalTile.transform;
 
                 tilemap.SetTile(pos, newTile);
+                tilemap.gameObject.tag = "Floor";
             }
         }
     }
@@ -93,6 +97,7 @@ public class StarsBehaviour : MonoBehaviour
                 newTile.transform = originalTile.transform;
 
                 tilemap.SetTile(pos, newTile);
+                tilemap.gameObject.tag = "Floor";
             }
         }
     }
