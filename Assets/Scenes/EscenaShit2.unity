@@ -5811,6 +5811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CtrlZ Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 204875456284732100, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 940418056591401309, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: isIce
       value: 0
@@ -5845,7 +5849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1675204228747505536, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.85
+      value: 5.33
       objectReference: {fileID: 0}
     - target: {fileID: 2093511711638443548, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5862,6 +5866,10 @@ PrefabInstance:
     - target: {fileID: 2103224576329033776, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_TagString
       value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300228374776591982, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.79
       objectReference: {fileID: 0}
     - target: {fileID: 3076242856442589141, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_Name
@@ -5905,7 +5913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915519469095503431, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.71
+      value: -4.14
       objectReference: {fileID: 0}
     - target: {fileID: 5202690973038524843, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: iceTilemapCollider
@@ -7634,6 +7642,10 @@ PrefabInstance:
     - target: {fileID: 7216535730782213526, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346749016932548703, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.61
       objectReference: {fileID: 0}
     - target: {fileID: 7456240913994863091, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_IsActive
