@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class ControlZ : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ControlZ : MonoBehaviour
 
     private List<Transform> trackedObjects = new List<Transform>();
     private float timer = 0f, cooldown = 0.1f;
+    public InputActionReference jump;
     AudioManager audioManager;
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class ControlZ : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 10000) timer = cooldown;
 
-        if (Input.GetKey(KeyCode.Z) && timer >= cooldown)
+        if (jump.action.WasPressedThisFrame() && timer >= cooldown)
         {
             LoadScene();
             
