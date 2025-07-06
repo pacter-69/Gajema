@@ -39,8 +39,8 @@ public class FadeTransition : MonoBehaviour
 
     private IEnumerator FadeAndLoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
-        yield return FadeTo(1f, fadeDuration);
+        yield return FadeTo(1f, fadeDuration);        
+        SceneManager.LoadScene(sceneName);             
     }
 
     private IEnumerator FadeTo(float targetAlpha, float duration)
