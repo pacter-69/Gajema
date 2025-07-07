@@ -40,8 +40,6 @@ public class BoxBehaviour : MonoBehaviour
     {
         stepSize = GetComponentInParent<Grid>().cellSize.x;
         SnapToGrid();
-
-        // Forzar asignación de función de bloqueo para evitar null
         SetBlockChecker(DefaultBlockCheck);
     }
 
@@ -51,23 +49,28 @@ public class BoxBehaviour : MonoBehaviour
         {
             Vector2Int current = GetGridPosition();
 
-            // Efecto viento solo en cajas NO Steel
             if (IsWindActive() && type != Type.Steel && isInWind)
             {
                 Vector2Int windDir = GetWindDirection();
                 if (windDir != Vector2Int.zero && !isBlockedFunc(current + windDir))
                 {
-                    // Aquí no empujamos cajas conectadas para que no se muevan todas
                     TryPush(windDir, current, isBlockedFunc);
                     return;
                 }
             }
-            // Efecto hielo solo en cajas NO Steel
             else if (IsIceActive() && isInIce)
             {
-                if (lastDirection != Vector2Int.zero && !isBlockedFunc(current + lastDirection))
+                if (lastDirection != Vector2Int.zero)
                 {
-                    TryPush(lastDirection, current, isBlockedFunc);
+                    if (!isBlockedFunc(current + lastDirection))
+                    {
+                        TryPush(lastDirection, current, isBlockedFunc);
+                    }
+                    else
+                    {
+                        // Detenida por obstáculo: olvidamos dirección
+                        lastDirection = Vector2Int.zero;
+                    }
                 }
             }
 
@@ -89,31 +92,42 @@ public class BoxBehaviour : MonoBehaviour
         }
     }
 
-    // Empuje manual (jugador), aquí se mueve el grupo conectado
     public bool TryManualPush(Vector2Int direction, System.Func<Vector2Int, bool> isBlocked)
     {
-        Vector2Int current = GetGridPosition();
+        if (!CanMove(direction, isBlocked)) return false;
 
-        bool moved = TryPush(direction, current, isBlocked);
-
-        if (moved && type == Type.Linked)
+        foreach (BoxBehaviour box in otherBoxes)
         {
-            foreach (BoxBehaviour box in otherBoxes)
+            if (box != null && !box.CanMove(direction, isBlocked))
             {
-                if (box != null && box != this)
-                {
-                    box.TryPush(direction, box.GetGridPosition(), isBlocked);
-                }
+                return false;
+            }
+        }
+
+        bool moved = TryPush(direction, GetGridPosition(), isBlocked);
+
+        foreach (BoxBehaviour box in otherBoxes)
+        {
+            if (box != null)
+            {
+                box.TryPush(direction, box.GetGridPosition(), isBlocked);
             }
         }
 
         return moved;
     }
 
-    // Empuje individual (sin mover conectadas)
-    public bool TryPush(Vector2Int direction, Vector2Int currentBoxGridPos, System.Func<Vector2Int, bool> isBlocked)
+    private bool CanMove(Vector2Int direction, System.Func<Vector2Int, bool> isBlocked)
     {
         if ((GetComponentInParent<LayerBehaviour>()?.isSticky ?? false) && isInCelo) return false;
+        if (type == Type.Steel || isMoving) return false;
+
+        Vector2Int nextPos = GetGridPosition() + direction;
+        return !isBlocked(nextPos);
+    }
+
+    public bool TryPush(Vector2Int direction, Vector2Int currentBoxGridPos, System.Func<Vector2Int, bool> isBlocked)
+    {
         if (type == Type.Steel || isMoving) return false;
 
         Vector2Int nextPos = currentBoxGridPos + direction;
