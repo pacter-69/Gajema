@@ -2226,6 +2226,10 @@ PrefabInstance:
       propertyPath: fade
       value: 
       objectReference: {fileID: 793580142}
+    - target: {fileID: 8066681892715571201, guid: 82a25b047a326eb4895547f6faa67b64, type: 3}
+      propertyPath: tutorial
+      value: Tutorial
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
