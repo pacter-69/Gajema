@@ -94,27 +94,24 @@ public class BoxBehaviour : MonoBehaviour
 
     public bool TryManualPush(Vector2Int direction, System.Func<Vector2Int, bool> isBlocked)
     {
-        if (!CanMove(direction, isBlocked)) return false;
+        bool anyMoved = false;
 
+        // Intentar mover esta caja
+        if (CanMove(direction, isBlocked))
+        {
+            anyMoved |= TryPush(direction, GetGridPosition(), isBlocked);
+        }
+
+        // Intentar mover las cajas conectadas
         foreach (BoxBehaviour box in otherBoxes)
         {
-            if (box != null && !box.CanMove(direction, isBlocked))
+            if (box != null && box.CanMove(direction, isBlocked))
             {
-                return false;
+                anyMoved |= box.TryPush(direction, box.GetGridPosition(), isBlocked);
             }
         }
 
-        bool moved = TryPush(direction, GetGridPosition(), isBlocked);
-
-        foreach (BoxBehaviour box in otherBoxes)
-        {
-            if (box != null)
-            {
-                box.TryPush(direction, box.GetGridPosition(), isBlocked);
-            }
-        }
-
-        return moved;
+        return anyMoved;
     }
 
     private bool CanMove(Vector2Int direction, System.Func<Vector2Int, bool> isBlocked)
