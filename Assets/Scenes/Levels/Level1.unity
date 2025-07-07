@@ -13314,6 +13314,30 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1532509865504057394, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532509865504057394, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1768023438}
+    - target: {fileID: 1532509865504057394, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FadeToBlack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532509865504057394, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FadeTransition, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532509865504057394, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: levelSelector
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532509865504057394, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1675204228747505536, guid: 8985533a9272fb8448b0651b74f12877, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5.33
