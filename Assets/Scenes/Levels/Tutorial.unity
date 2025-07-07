@@ -6611,6 +6611,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6516829103445010216, guid: 8150ef5e777277f4aaacf60d6bf4fd68, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 4854.755
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516829103445010216, guid: 8150ef5e777277f4aaacf60d6bf4fd68, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 3491.7446
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516829103445010216, guid: 8150ef5e777277f4aaacf60d6bf4fd68, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516829103445010216, guid: 8150ef5e777277f4aaacf60d6bf4fd68, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8783535764772901960, guid: 8150ef5e777277f4aaacf60d6bf4fd68, type: 3}
       propertyPath: m_Name
       value: Transition
