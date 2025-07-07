@@ -94,7 +94,7 @@ public class MovementBehaviour : MonoBehaviour
                     var box = boxObj.GetComponent<BoxBehaviour>();
                     var boxCurrentPos = box.GetGridPosition();
 
-                    if (box.TryPush(direction, boxCurrentPos, IsBlocked))
+                    if (box.TryManualPush(direction, IsBlocked))
                     {
                         // Player does NOT move when pushing
                         cooldownTimer = moveCooldown;
