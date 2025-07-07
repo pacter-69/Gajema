@@ -199,10 +199,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1591993215}
-        m_TargetAssemblyTypeName: LevelSelectorBehaviour, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
+      - m_Target: {fileID: 133134429}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: GoToLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -504,10 +504,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1591993215}
-        m_TargetAssemblyTypeName: LevelSelectorBehaviour, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
+      - m_Target: {fileID: 854515105}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: GoToLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -740,10 +740,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1591993215}
-        m_TargetAssemblyTypeName: LevelSelectorBehaviour, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
+      - m_Target: {fileID: 1099769939}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: GoToLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1020,10 +1020,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1591993215}
-        m_TargetAssemblyTypeName: LevelSelectorBehaviour, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
+      - m_Target: {fileID: 1685065284}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: GoToLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1387,10 +1387,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1591993215}
-        m_TargetAssemblyTypeName: LevelSelectorBehaviour, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
+      - m_Target: {fileID: 2095414993}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: GoToLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

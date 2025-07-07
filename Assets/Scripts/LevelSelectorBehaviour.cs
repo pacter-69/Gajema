@@ -39,5 +39,6 @@ public class LevelSelectorBehaviour : MonoBehaviour, IDataPersistence
     niveles. Si es conflictivo con mis cambios avisar. Quizás sea más fácil añadir referencias gameObject de 
     los botones nivel y gestionar los bloqueos y el desbloqueo debug
     todo desde este mismo Script*/
+    //aviso que es conflictivo
 
 }
