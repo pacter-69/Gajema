@@ -1,7 +1,5 @@
-﻿using Unity.Mathematics;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
 public class BoxBehaviour : MonoBehaviour
 {
@@ -18,13 +16,10 @@ public class BoxBehaviour : MonoBehaviour
     private float moveTimer = 0f;
 
     AudioManager audioManager;
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioManager>();
-    }
 
     private Vector2Int lastDirection;
     private System.Func<Vector2Int, bool> isBlockedFunc;
+
     public Type type;
     public enum Type
     {
@@ -36,11 +31,16 @@ public class BoxBehaviour : MonoBehaviour
     [Header("Linked boxes")]
     public BoxBehaviour[] otherBoxes;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Sound")?.GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         stepSize = GetComponentInParent<Grid>().cellSize.x;
         SnapToGrid();
-        SetBlockChecker(isBlockedFunc);
+        SetBlockChecker(DefaultBlockCheck);
     }
 
     private void Update()
@@ -60,13 +60,21 @@ public class BoxBehaviour : MonoBehaviour
             }
             else if (IsIceActive() && isInIce)
             {
-                if (lastDirection != Vector2Int.zero && !isBlockedFunc(current + lastDirection))
+                if (lastDirection != Vector2Int.zero)
                 {
-                    TryPush(lastDirection, current, isBlockedFunc);
+                    if (!isBlockedFunc(current + lastDirection))
+                    {
+                        TryPush(lastDirection, current, isBlockedFunc);
+                    }
+                    else
+                    {
+                        // Detenida por obstáculo: olvidamos dirección
+                        lastDirection = Vector2Int.zero;
+                    }
                 }
             }
 
-            hasSavedThisSlide = false; // reset for the next slide chain
+            hasSavedThisSlide = false;
         }
 
         if (isMoving)
@@ -77,44 +85,76 @@ public class BoxBehaviour : MonoBehaviour
 
             if (t >= 1f)
             {
-                audioManager.PlaySFX(audioManager.push);
+                transform.position = targetPosition;
                 isMoving = false;
+                audioManager?.PlaySFX(audioManager.push);
             }
         }
     }
 
+    public bool TryManualPush(Vector2Int direction, System.Func<Vector2Int, bool> isBlocked)
+    {
+        if (!CanMove(direction, isBlocked)) return false;
+
+        foreach (BoxBehaviour box in otherBoxes)
+        {
+            if (box != null && !box.CanMove(direction, isBlocked))
+            {
+                return false;
+            }
+        }
+
+        bool moved = TryPush(direction, GetGridPosition(), isBlocked);
+
+        foreach (BoxBehaviour box in otherBoxes)
+        {
+            if (box != null)
+            {
+                box.TryPush(direction, box.GetGridPosition(), isBlocked);
+            }
+        }
+
+        return moved;
+    }
+
+    private bool CanMove(Vector2Int direction, System.Func<Vector2Int, bool> isBlocked)
+    {
+        if ((GetComponentInParent<LayerBehaviour>()?.isSticky ?? false) && isInCelo) return false;
+        if (type == Type.Steel || isMoving) return false;
+
+        Vector2Int nextPos = GetGridPosition() + direction;
+        return !isBlocked(nextPos);
+    }
 
     public bool TryPush(Vector2Int direction, Vector2Int currentBoxGridPos, System.Func<Vector2Int, bool> isBlocked)
     {
-        if ((GetComponentInParent<LayerBehaviour>().isSticky && isInCelo) || type == BoxBehaviour.Type.Steel || isMoving)
-        { return false; }
+        if (type == Type.Steel || isMoving) return false;
 
         Vector2Int nextPos = currentBoxGridPos + direction;
         if (isBlocked(nextPos)) return false;
 
-        // Save once at the beginning of the slide
         if (!hasSavedThisSlide)
         {
-            //Save();
+            Save();
             hasSavedThisSlide = true;
         }
 
-        // Store direction and blocking function
         lastDirection = direction;
         isBlockedFunc = isBlocked;
 
-        // Start moving
         startPosition = transform.position;
         targetPosition = new Vector3(nextPos.x * stepSize, nextPos.y * stepSize, 0f);
         moveTimer = 0f;
         isMoving = true;
 
-        for (int i = 0; i < otherBoxes.Length; i++)
-        {
-            otherBoxes[i].TryPush(direction, otherBoxes[i].GetGridPosition(), otherBoxes[i].isBlockedFunc);
-        }
-
         return true;
+    }
+
+    private bool DefaultBlockCheck(Vector2Int position)
+    {
+        Vector3 worldPos = new Vector3(position.x * stepSize, position.y * stepSize, 0f);
+        Collider2D hit = Physics2D.OverlapBox(worldPos, new Vector2(0.4f, 0.4f), 0f, LayerMask.GetMask("Boxes", "Walls"));
+        return hit != null;
     }
 
     public Vector2Int GetGridPosition()
@@ -129,7 +169,6 @@ public class BoxBehaviour : MonoBehaviour
     {
         isBlockedFunc = blockChecker;
     }
-
 
     private void SnapToGrid()
     {
@@ -152,7 +191,7 @@ public class BoxBehaviour : MonoBehaviour
     private Vector2Int GetWindDirection()
     {
         var layer = GetComponentInParent<LayerBehaviour>();
-        return layer.wDirection switch
+        return layer?.wDirection switch
         {
             LayerBehaviour.WindDirection.North => Vector2Int.up,
             LayerBehaviour.WindDirection.South => Vector2Int.down,
@@ -162,7 +201,6 @@ public class BoxBehaviour : MonoBehaviour
         };
     }
 
-
     private void Save()
     {
         GetComponentInParent<ControlZ>()?.SaveScene();
@@ -170,8 +208,7 @@ public class BoxBehaviour : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("toy en collider");
-        if((collision.gameObject == starTilemapCollider || iceTilemapCollider) && collision.gameObject.CompareTag("Ice"))
+        if ((collision.gameObject == starTilemapCollider || iceTilemapCollider) && collision.gameObject.CompareTag("Ice"))
         {
             isInIce = true;
             isInCelo = false;
