@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0f5df7ef5fe104cac7ea6f24122b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSceneName: 
+  levelSceneName: Level1
   unlocked: 0
   unlockedSprite: {fileID: 1969293657401169969, guid: 16eb3a010cba40844a89e6ad2bf4c41e, type: 3}
   lockedSprite: {fileID: 5848900594276698313, guid: 288042c287c93fa44ad9dc36818b7cd1, type: 3}
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0f5df7ef5fe104cac7ea6f24122b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSceneName: 
+  levelSceneName: Level3
   unlocked: 0
   unlockedSprite: {fileID: -1522416725829140941, guid: 24b25269e2cc00949953af056a947dad, type: 3}
   lockedSprite: {fileID: 3759128633354943638, guid: 8842b0e33c07a9f45a5c15c4fdbdf266, type: 3}
@@ -903,6 +903,7 @@ MonoBehaviour:
   - {fileID: 854515105}
   - {fileID: 1099769939}
   - {fileID: 2095414993}
+  - {fileID: 1685065284}
   levelsUnlocked: 1
   fade: {fileID: 2090690184}
 --- !u!4 &1591993216

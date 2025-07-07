@@ -12,7 +12,7 @@ public class LevelSelectorBehaviour : MonoBehaviour, IDataPersistence
 
     public void Awake()
     {
-        for (int i = 1; i <= allLevels.Count; i++)
+        for (int i = 0; i < levelsUnlocked; i++)
         {
             allLevels[i].unlocked = true;
         }

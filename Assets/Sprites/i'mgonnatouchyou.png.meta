@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 480c126143d5ea14c95e4202e459ae07
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1139535656968596448
+    second: i'mgonnatouchyou_0
+  - first:
+      213: 1451032027849209066
+    second: i'mgonnatouchyou_1
+  - first:
+      213: -8114578545520935442
+    second: i'mgonnatouchyou_2
+  - first:
+      213: -5148894459112686592
+    second: i'mgonnatouchyou_3
+  - first:
+      213: -8903572123062966492
+    second: i'mgonnatouchyou_4
+  - first:
+      213: 996966006008692699
+    second: i'mgonnatouchyou_5
+  - first:
+      213: 1263906469042375697
+    second: i'mgonnatouchyou_6
+  - first:
+      213: -8987925518228717533
+    second: i'mgonnatouchyou_7
+  - first:
+      213: -3415302027008255790
+    second: i'mgonnatouchyou_8
+  - first:
+      213: -8818573092324243544
+    second: i'mgonnatouchyou_9
+  - first:
+      213: -1994422348920275932
+    second: i'mgonnatouchyou_10
+  - first:
+      213: 2388403067235958679
+    second: i'mgonnatouchyou_11
+  - first:
+      213: 3887732712453500778
+    second: i'mgonnatouchyou_12
+  - first:
+      213: -2969597717164897715
+    second: i'mgonnatouchyou_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 512
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 387
+        width: 82
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eb218a74a170df00800000000000000
+      internalID: 1139535656968596448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 397
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae4baa101f9132410800000000000000
+      internalID: 1451032027849209066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_2
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 406
+        width: 44
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eedf7344ec9336f80800000000000000
+      internalID: -8114578545520935442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_3
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 399
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00c7c9af4c37b88b0800000000000000
+      internalID: -5148894459112686592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_4
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 391
+        width: 55
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 427e2c4c358207480800000000000000
+      internalID: -8903572123062966492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_5
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 303
+        width: 63
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdfb941ec4fe5dd00800000000000000
+      internalID: 996966006008692699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_6
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 303
+        width: 52
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11cc694bc3c4a8110800000000000000
+      internalID: 1263906469042375697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_7
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 312
+        width: 53
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3200f4a7c59744380800000000000000
+      internalID: -8987925518228717533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_8
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 188
+        width: 61
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d85087c6e86a90d0800000000000000
+      internalID: -3415302027008255790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_9
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 198
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a7023ece722e9580800000000000000
+      internalID: -8818573092324243544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_10
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 194
+        width: 48
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42cb188c0736254e0800000000000000
+      internalID: -1994422348920275932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_11
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 200
+        width: 56
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79f7d037fef452120800000000000000
+      internalID: 2388403067235958679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_12
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 215
+        width: 30
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6fe47bcd4004f530800000000000000
+      internalID: 3887732712453500778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: i'mgonnatouchyou_13
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 185
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4a439e1c9ed9c6d0800000000000000
+      internalID: -2969597717164897715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      i'mgonnatouchyou_0: 1139535656968596448
+      i'mgonnatouchyou_1: 1451032027849209066
+      i'mgonnatouchyou_10: -1994422348920275932
+      i'mgonnatouchyou_11: 2388403067235958679
+      i'mgonnatouchyou_12: 3887732712453500778
+      i'mgonnatouchyou_13: -2969597717164897715
+      i'mgonnatouchyou_2: -8114578545520935442
+      i'mgonnatouchyou_3: -5148894459112686592
+      i'mgonnatouchyou_4: -8903572123062966492
+      i'mgonnatouchyou_5: 996966006008692699
+      i'mgonnatouchyou_6: 1263906469042375697
+      i'mgonnatouchyou_7: -8987925518228717533
+      i'mgonnatouchyou_8: -3415302027008255790
+      i'mgonnatouchyou_9: -8818573092324243544
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
