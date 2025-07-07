@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSceneName: Level1
-  unlocked: 0
+  unlocked: 1
   unlockedSprite: {fileID: 1969293657401169969, guid: 16eb3a010cba40844a89e6ad2bf4c41e, type: 3}
   lockedSprite: {fileID: 5848900594276698313, guid: 288042c287c93fa44ad9dc36818b7cd1, type: 3}
 --- !u!114 &133134430
@@ -268,51 +268,6 @@ RectTransform:
   m_AnchoredPosition: {x: -279, y: 313}
   m_SizeDelta: {x: 160, y: 152.68}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &595048090
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 595048092}
-  - component: {fileID: 595048091}
-  m_Layer: 0
-  m_Name: DataPersistenceManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &595048091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595048090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd74b2302790cc44eaa35d17b2f854b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: game.data
---- !u!4 &595048092
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595048090}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 222.56198, y: 566.53345, z: -1.451763}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &740511674
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSceneName: Level2
-  unlocked: 0
+  unlocked: 1
   unlockedSprite: {fileID: -2239477220182703891, guid: 146a60e8ce9323645bb80e7154a7baab, type: 3}
   lockedSprite: {fileID: -8428620958434079640, guid: 9ada02279cc2cb24bb267b8739bad0fd, type: 3}
 --- !u!114 &854515106
@@ -693,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSceneName: Level3
-  unlocked: 0
+  unlocked: 1
   unlockedSprite: {fileID: -1522416725829140941, guid: 24b25269e2cc00949953af056a947dad, type: 3}
   lockedSprite: {fileID: 3759128633354943638, guid: 8842b0e33c07a9f45a5c15c4fdbdf266, type: 3}
 --- !u!114 &1099769940
@@ -1190,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSceneName: Level4
-  unlocked: 0
+  unlocked: 1
   unlockedSprite: {fileID: 6672790065599122585, guid: aa77cefafd363b94f91995c7a9e7007c, type: 3}
   lockedSprite: {fileID: -795811834675618693, guid: 3aa009c6dbbc71a4cad8249e75b11943, type: 3}
 --- !u!114 &2095414994
@@ -1296,5 +1251,4 @@ SceneRoots:
   - {fileID: 1885538261}
   - {fileID: 1130221059}
   - {fileID: 1591993216}
-  - {fileID: 595048092}
   - {fileID: 1785567795}
